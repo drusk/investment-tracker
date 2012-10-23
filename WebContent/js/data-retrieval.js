@@ -75,9 +75,7 @@ function displaySymbolList(suggestions) {
 		/* The information about the suggestion to be displayed to the user */ 
 		var displayInfo = suggestion.symbol + ": " + suggestion.name;
 		resultsList.append("<li><a href=\"#\" data-role=\"button\" " +
-				"data-mini=\"true\" data-icon=\"check\" " + 
-				"data-iconpos=\"right\" " + "id=\"" + domId + "\">" + 
-				displayInfo + "</a>");
+				"id=\"" + domId + "\">" + displayInfo + "</a>");
 		
 		
 		/* Attach an event handler to fire if the suggestion is selected for 
