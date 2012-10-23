@@ -63,7 +63,6 @@ function yahooSuggestSymbols(query, resultsFunction) {
  * @param suggestions an array of suggestions 
  */
 function displaySymbolList(suggestions) {
-	alert("Displaying symbol list");
 	var resultsList = $("#search-results");
 	
 	/* Clear any existing search results */
@@ -75,20 +74,24 @@ function displaySymbolList(suggestions) {
 		
 		/* The information about the suggestion to be displayed to the user */ 
 		var displayInfo = suggestion.symbol + ": " + suggestion.name;
-		alert("Appending: " + suggestion.symbol);
-		resultsList.append("<li><button data-role=\"button\" \"data-icon=\"check\" " + 
+		resultsList.append("<li><a href=\"#\" data-role=\"button\" " +
+				"data-mini=\"true\" data-icon=\"check\" " + 
 				"data-iconpos=\"right\" " + "id=\"" + domId + "\">" + 
-				displayInfo + "</button>");
+				displayInfo + "</a>");
+		
 		
 		/* Attach an event handler to fire if the suggestion is selected for 
 		 * for tracking. 
 		 */
-		alert("Adding click handler: " + suggestion.symbol);
 		$("#" + domId).click({symbol: suggestion.symbol}, function(event) {
 			trackSymbol(event.data.symbol);
 		});
 	}
 	
+	/* Need to refresh the list in order for the new items to be styled
+	 * correctly.
+	 */
+	resultsList.listview("refresh");
 }
 
 /**
