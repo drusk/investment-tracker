@@ -29,12 +29,13 @@ function searchSubmitHandler() {
 }
 
 /**
- * Displays a list of symbols in the UI which may be selected to track.
+ * Displays a list of symbols and their related info in the UI.  Provide 
+ * ability for them to be selected for tracking.
  * 
- * @param symbols an array of symbols
+ * @param suggestions an array of suggestions 
  */
-function displaySymbolList(symbols) {
-	alert(JSON.stringify(symbols));
+function displaySymbolList(suggestions) {
+	alert(JSON.stringify(suggestions));
 }
 
 /**
@@ -62,18 +63,7 @@ function yahooSuggestSymbols(query, resultsFunction) {
 	});
 
 	YAHOO.Finance.SymbolSuggest.ssCallback = function (jsonData) {
-		/* Parse results to an array of symbols */
-		var symbols = [];
-		
-		var resultsArray = jsonData.ResultSet.Result;
-		for (var i = 0; i < resultsArray.length; i++) {
-			var result = resultsArray[i];
-			/* TODO: may want to retrieve more information here to help user 
-			 * choose the right one. */
-			symbols.push(result.symbol);
-		}
-		
-		/* Pass along the parsed results */
-        resultsFunction(symbols);
+		/* Pass along the relevant data */
+        resultsFunction(jsonData.ResultSet.Result);
     };
 }
