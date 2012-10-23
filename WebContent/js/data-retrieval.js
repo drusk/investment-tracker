@@ -18,8 +18,6 @@ function initEventHandlers() {
  */
 function searchSubmitHandler() {
 	var query = $("#search-input").val();
-	alert(query);
-	
 	if (query.length == 0) {
 		/* No query has been entered, do nothing */
 		return;
@@ -65,5 +63,39 @@ function yahooSuggestSymbols(query, resultsFunction) {
  * @param suggestions an array of suggestions 
  */
 function displaySymbolList(suggestions) {
-	alert(JSON.stringify(suggestions));
+	alert("Displaying symbol list");
+	var resultsList = $("#search-results");
+	
+	/* Clear any existing search results */
+	resultsList.empty();
+	
+	for (var i = 0; i < suggestions.length; i++) {
+		var suggestion = suggestions[i];
+		var domId = "suggestion-" + i;
+		
+		/* The information about the suggestion to be displayed to the user */ 
+		var displayInfo = suggestion.symbol + ": " + suggestion.name;
+		alert("Appending: " + suggestion.symbol);
+		resultsList.append("<li><button data-role=\"button\" \"data-icon=\"check\" " + 
+				"data-iconpos=\"right\" " + "id=\"" + domId + "\">" + 
+				displayInfo + "</button>");
+		
+		/* Attach an event handler to fire if the suggestion is selected for 
+		 * for tracking. 
+		 */
+		alert("Adding click handler: " + suggestion.symbol);
+		$("#" + domId).click({symbol: suggestion.symbol}, function(event) {
+			trackSymbol(event.data.symbol);
+		});
+	}
+	
+}
+
+/**
+ * Begins tracking the stock for a specified symbol.
+ * 
+ * @param symbol the symbol to track.  Ex: GOOG for Google Inc.
+ */
+function trackSymbol(symbol) {
+	alert("Tracking symbol " + symbol);
 }

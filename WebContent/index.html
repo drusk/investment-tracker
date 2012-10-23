@@ -13,9 +13,15 @@
 		<div data-role="page">
 			<div data-role="header"><h1>Investment Tracker</h1></div>
 			<div data-role="content">
+			
+				<!-- Search bar -->
 				<label for="search-stocks">Search for trackable stocks:</label>
 				<input type="search" name="search" id="search-input" value="" />
 				<input type="submit" data-mini="true" id="search-submit" value="Search" />
+				
+				<!-- Search results -->
+				<ul data-role="listview" id="search-results">
+				</ul>
 			</div>
 		</div>
 	</body>
