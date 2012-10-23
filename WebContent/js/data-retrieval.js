@@ -25,16 +25,26 @@ function searchSubmitHandler() {
 		return;
 	}
 	
-	var symbols = yahooSuggestSymbols(query);
-	
+	yahooSuggestSymbols(query, displaySymbolList);
+}
+
+/**
+ * Displays a list of symbols in the UI which may be selected to track.
+ * 
+ * @param symbols an array of symbols
+ */
+function displaySymbolList(symbols) {
+	alert(JSON.stringify(symbols));
 }
 
 /**
  * Retries symbol suggestions for a name queried.
  * 
- * @param query
+ * @param query the name of the stock to search for
+ * @param resultsFunction the function to call with the results of the search.
+ * @returns an array of the suggested symbols
  */
-function yahooSuggestSymbols(query) {
+function yahooSuggestSymbols(query, resultsFunction) {
 	/* The callback doesn't work if YAHOO isn't global. */
 	window.YAHOO = {
 		Finance: {
@@ -51,7 +61,19 @@ function yahooSuggestSymbols(query) {
 		jsonpCallback: "YAHOO.Finance.SymbolSuggest.ssCallback",
 	});
 
-	YAHOO.Finance.SymbolSuggest.ssCallback = function (data) {
-        alert(JSON.stringify(data));
+	YAHOO.Finance.SymbolSuggest.ssCallback = function (jsonData) {
+		/* Parse results to an array of symbols */
+		var symbols = [];
+		
+		var resultsArray = jsonData.ResultSet.Result;
+		for (var i = 0; i < resultsArray.length; i++) {
+			var result = resultsArray[i];
+			/* TODO: may want to retrieve more information here to help user 
+			 * choose the right one. */
+			symbols.push(result.symbol);
+		}
+		
+		/* Pass along the parsed results */
+        resultsFunction(symbols);
     };
 }
