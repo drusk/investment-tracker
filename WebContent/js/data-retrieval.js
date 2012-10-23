@@ -29,16 +29,6 @@ function searchSubmitHandler() {
 }
 
 /**
- * Displays a list of symbols and their related info in the UI.  Provide 
- * ability for them to be selected for tracking.
- * 
- * @param suggestions an array of suggestions 
- */
-function displaySymbolList(suggestions) {
-	alert(JSON.stringify(suggestions));
-}
-
-/**
  * Retries symbol suggestions for a name queried.
  * 
  * @param query the name of the stock to search for
@@ -66,4 +56,14 @@ function yahooSuggestSymbols(query, resultsFunction) {
 		/* Pass along the relevant data */
         resultsFunction(jsonData.ResultSet.Result);
     };
+}
+
+/**
+ * Displays a list of symbols and their related info in the UI.  Provide 
+ * ability for them to be selected for tracking.
+ * 
+ * @param suggestions an array of suggestions 
+ */
+function displaySymbolList(suggestions) {
+	alert(JSON.stringify(suggestions));
 }
