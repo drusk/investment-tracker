@@ -29,12 +29,13 @@ public class YahooHistoricalDataBeanMatcher extends
 	@Override
 	public boolean matchesSafely(YahooHistoricalDataBean actual) {
 		return expected.getDate().equals(actual.getDate())
-				&& expected.getOpen() == actual.getOpen()
-				&& expected.getHigh() == actual.getHigh()
-				&& expected.getLow() == actual.getLow()
-				&& expected.getClose() == actual.getClose()
-				&& expected.getVolume() == actual.getVolume()
-				&& expected.getAdjustedClose() == actual.getAdjustedClose();
+				&& expected.getOpen().equals(actual.getOpen())
+				&& expected.getHigh().equals(actual.getHigh())
+				&& expected.getLow().equals(actual.getLow())
+				&& expected.getClose().equals(actual.getClose())
+				&& expected.getVolume().equals(actual.getVolume())
+				&& expected.getAdjustedClose()
+						.equals(actual.getAdjustedClose());
 	}
 
 	@Override
@@ -43,17 +44,18 @@ public class YahooHistoricalDataBeanMatcher extends
 	}
 
 	@Factory
-	public static Matcher<YahooHistoricalDataBean> equalsBean(String dateString,
-			double open, double high, double low, double close, double volume,
-			double adjustedClose) throws ParseException {
+	public static Matcher<YahooHistoricalDataBean> equalsBean(
+			String dateString, String open, String high, String low,
+			String close, String volume, String adjustedClose)
+			throws ParseException {
 		YahooHistoricalDataBean bean = new YahooHistoricalDataBean();
 		bean.setDate(DateParser.parse(dateString));
-		bean.setOpen("" + open);
-		bean.setHigh("" + high);
-		bean.setLow("" + low);
-		bean.setClose("" + close);
-		bean.setVolume("" + volume);
-		bean.setAdjustedClose("" + adjustedClose);
+		bean.setOpen(open);
+		bean.setHigh(high);
+		bean.setLow(low);
+		bean.setClose(close);
+		bean.setVolume(volume);
+		bean.setAdjustedClose(adjustedClose);
 		return new YahooHistoricalDataBeanMatcher(bean);
 	}
 

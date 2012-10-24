@@ -14,7 +14,7 @@ import java.util.Date;
 public final class DateParser {
 
 	/**
-	 * Parses a date from a string in the form yyyy-mmm-dd.
+	 * Parses a date from a string in the form yyyy-mm-dd.
 	 * 
 	 * @param dateString
 	 *            the string form of the date to parse.
@@ -22,7 +22,7 @@ public final class DateParser {
 	 * @throws ParseException 
 	 */
 	public static Date parse(String dateString) throws ParseException {
-		DateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		return formatter.parse(dateString);
 	}
 

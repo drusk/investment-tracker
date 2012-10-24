@@ -42,12 +42,12 @@ public class YahooHistoricalDataParserTest {
 		assertEquals(beans.size(), 2062);
 		assertThat(
 				beans.get(0),
-				equalsBean("2012-Oct-23", 672.01, 687.33, 672, 680.35, 2916600,
-						680.35));
+				equalsBean("2012-10-23", "672.01", "687.33", "672.00", "680.35", "2916600",
+						"680.35"));
 		assertThat(
 				beans.get(2061),
-				equalsBean("2004-Aug-19", 100, 104.06, 95.96, 100.34, 22351900,
-						100.34));
+				equalsBean("2004-08-19", "100.00", "104.06", "95.96", "100.34", "22351900",
+						"100.34"));
 	}
 
 }

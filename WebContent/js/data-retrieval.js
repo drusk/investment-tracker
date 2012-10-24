@@ -77,12 +77,11 @@ function displaySymbolList(suggestions) {
 		resultsList.append("<li><a href=\"#\" data-role=\"button\" " +
 				"id=\"" + domId + "\">" + displayInfo + "</a>");
 		
-		
 		/* Attach an event handler to fire if the suggestion is selected for 
 		 * for tracking. 
 		 */
 		$("#" + domId).click({symbol: suggestion.symbol}, function(event) {
-			trackSymbol(event.data.symbol);
+			retrieveSymbolData(event.data.symbol);
 		});
 	}
 	
@@ -93,10 +92,27 @@ function displaySymbolList(suggestions) {
 }
 
 /**
- * Begins tracking the stock for a specified symbol.
+ * Retrieves all available data for a specified symbol.
  * 
- * @param symbol the symbol to track.  Ex: GOOG for Google Inc.
+ * @param symbol the symbol to look up.  Ex: GOOG for Google Inc.
  */
-function trackSymbol(symbol) {
+function retrieveSymbolData(symbol) {
 	alert("Tracking symbol " + symbol);
+	
+	// download data for symbol
+	$.ajax({
+		url: "HistoricalData",
+		data: {s: symbol},
+		success: "generatePlot",
+		dataType: "application/json"
+	});
+}
+
+/**
+ * Generates a plot of the provided JSON data.
+ * 
+ * @param json the JSON data to plot.
+ */
+function generatePlot(json) {
+	alert("Displaying data");
 }
