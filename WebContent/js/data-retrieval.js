@@ -115,4 +115,5 @@ function retrieveSymbolData(symbol) {
  */
 function generatePlot(json) {
 	alert("Displaying data");
+	alert(json);
 }

@@ -16,7 +16,7 @@ import ca.drusk.investment_tracker.utils.URLReader;
  */
 public class YahooHistoricalDataFetcher {
 
-	private String baseUrl = "http://chart.yahoo.com/table.csv";
+	private String baseUrl = "http://chart.yahoo.com/table.csv?s=";
 
 	/**
 	 * Generates the URL with the data for the requested symbol. Makes sure that
@@ -29,7 +29,7 @@ public class YahooHistoricalDataFetcher {
 	private String getEncodedUrl(String symbol) {
 		String encodedUrl = null;
 		try {
-			encodedUrl = URLEncoder.encode(baseUrl + symbol, "UTF-8");
+			encodedUrl = baseUrl + URLEncoder.encode(symbol, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// there should be no problem using UTF-8
 			e.printStackTrace();
