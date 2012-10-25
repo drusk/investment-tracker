@@ -12,7 +12,7 @@
 	</head>
 	
 	<body>
-		<div data-role="page">
+		<div data-role="page" id="page-search">
 			<div data-role="header"><h1>Investments</h1></div>
 			<div data-role="content">
 			
@@ -25,14 +25,16 @@
 				<ul data-role="listview" data-inset="true" id="search-results">
 				</ul>
 				
-				<div id="plot-holder"></div>
 			</div>
 		</div>
 		
-		<div data-role="page">
-			<div data-role="header"><h1>Plot</h1></div>
+		<div data-role="page" id="page-plot">
+			<div data-role="header">
+				<h1>Plot</h1>
+				<a data-role="button" data-direction="reverse" data-inline="true" data-mini="true" data-icon="arrow-l" href="#page-search">Back</a>
+			</div>
 			<div data-role="content">
-				
+				<div id="plot-holder"></div>
 			</div>
 		</div>
 		
