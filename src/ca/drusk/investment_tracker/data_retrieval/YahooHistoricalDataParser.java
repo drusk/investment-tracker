@@ -24,7 +24,6 @@ public class YahooHistoricalDataParser {
 
 		List<String[]> allLines = reader.readAll();
 		assert allLines.size() >= 1 : "no data retrieved";
-
 		String[] headers = allLines.remove(0);
 		// TODO generate an exception which can be handled by client if data is
 		// not as expected

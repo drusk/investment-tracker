@@ -27,14 +27,15 @@ public class YahooHistoricalDataFetcher {
 	 * @return the encoded URL which can be used to retrieve data for the symbol
 	 */
 	private String getEncodedUrl(String symbol) {
-		String encodedUrl = null;
+		assert symbol != null;
+		String url = baseUrl;
 		try {
-			encodedUrl = baseUrl + URLEncoder.encode(symbol, "UTF-8");
+			url += URLEncoder.encode(symbol, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// there should be no problem using UTF-8
 			e.printStackTrace();
 		}
-		return encodedUrl;
+		return url;
 	}
 
 	/**
@@ -49,7 +50,7 @@ public class YahooHistoricalDataFetcher {
 	 */
 	public List<YahooHistoricalDataBean> fetchDataForSymbol(String symbol)
 			throws IOException, ParseException {
-		String csvData = URLReader.getText(getEncodedUrl(symbol));
+		String csvData = URLReader.getText(getEncodedUrl(symbol), true);
 		return new YahooHistoricalDataParser().parse(csvData);
 	}
 

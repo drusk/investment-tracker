@@ -102,7 +102,7 @@ function retrieveSymbolData(symbol) {
 	// download data for symbol
 	$.ajax({
 		url: "HistoricalData",
-		data: {s: symbol},
+		data: {symbol: symbol},
 		success: "generatePlot",
 		dataType: "application/json"
 	});
