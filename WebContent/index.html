@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="lib/dygraph-combined.js"></script>
+	<script src="lib/date.js"></script>
 	<script src="js/data-retrieval.js"></script>
 	</head>
 	
@@ -22,13 +24,15 @@
 				<!-- Search results -->
 				<ul data-role="listview" data-inset="true" id="search-results">
 				</ul>
+				
+				<div id="plot-holder"></div>
 			</div>
 		</div>
 		
 		<div data-role="page">
 			<div data-role="header"><h1>Plot</h1></div>
 			<div data-role="content">
-				<div id="plot-holder"></div>
+				
 			</div>
 		</div>
 		

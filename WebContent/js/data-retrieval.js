@@ -97,8 +97,6 @@ function displaySymbolList(suggestions) {
  * @param symbol the symbol to look up.  Ex: GOOG for Google Inc.
  */
 function retrieveSymbolData(symbol) {
-	alert("Tracking symbol " + symbol);
-	
 	// download data for symbol
 	$.ajax({
 		url: "HistoricalData",
@@ -114,6 +112,16 @@ function retrieveSymbolData(symbol) {
  * @param json the JSON data to plot.
  */
 function generatePlot(json) {
-	alert("Displaying data");
-	alert(json);
+	/* Select the data to be plotted from the data returned. */
+	var plotData = [];
+	for (var i = 0; i < json.length; i++) {
+		var dataPoint = json[i];
+		plotData.push([Date.parse(dataPoint.date), dataPoint.close]);
+	}
+	/* XXX can Dygraph sort the dates for me automatically?  They are being 
+	 parsed in reverse order, but it would be best if the plot didn't care 
+	 the order. */
+	plotData.reverse();
+	new Dygraph(document.getElementById("plot-holder"),
+			plotData, {labels: ["Date", "Closing price"]});
 }
