@@ -103,8 +103,8 @@ function retrieveSymbolData(symbol) {
 	$.ajax({
 		url: "HistoricalData",
 		data: {symbol: symbol},
-		success: "generatePlot",
-		dataType: "application/json"
+		success: generatePlot,
+		dataType: "json"
 	});
 }
 
