@@ -8,26 +8,26 @@ import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
-import ca.drusk.investment_tracker.data_retrieval.YahooHistoricalDataBean;
+import ca.drusk.investment_tracker.data_retrieval.YahooDataBean;
 import ca.drusk.investment_tracker.utils.DateParser;
 
 /**
- * Matcher for {@link YahooHistoricalDataBean}s.
+ * Matcher for {@link YahooDataBean}s.
  * 
  * @author drusk
  * 
  */
 public class YahooHistoricalDataBeanMatcher extends
-		TypeSafeMatcher<YahooHistoricalDataBean> {
+		TypeSafeMatcher<YahooDataBean> {
 
-	private final YahooHistoricalDataBean expected;
+	private final YahooDataBean expected;
 
-	public YahooHistoricalDataBeanMatcher(YahooHistoricalDataBean expected) {
+	public YahooHistoricalDataBeanMatcher(YahooDataBean expected) {
 		this.expected = expected;
 	}
 
 	@Override
-	public boolean matchesSafely(YahooHistoricalDataBean actual) {
+	public boolean matchesSafely(YahooDataBean actual) {
 		return expected.getDate().equals(actual.getDate())
 				&& expected.getOpen().equals(actual.getOpen())
 				&& expected.getHigh().equals(actual.getHigh())
@@ -44,11 +44,11 @@ public class YahooHistoricalDataBeanMatcher extends
 	}
 
 	@Factory
-	public static Matcher<YahooHistoricalDataBean> equalsBean(
+	public static Matcher<YahooDataBean> equalsBean(
 			String dateString, String open, String high, String low,
 			String close, String volume, String adjustedClose)
 			throws ParseException {
-		YahooHistoricalDataBean bean = new YahooHistoricalDataBean();
+		YahooDataBean bean = new YahooDataBean();
 		bean.setDate(DateParser.parse(dateString));
 		bean.setOpen(open);
 		bean.setHigh(high);

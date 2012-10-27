@@ -48,7 +48,7 @@ public class YahooHistoricalDataFetcher {
 	 * @throws IOException
 	 * @throws ParseException 
 	 */
-	public List<YahooHistoricalDataBean> fetchDataForSymbol(String symbol)
+	public List<YahooDataBean> fetchDataForSymbol(String symbol)
 			throws IOException, ParseException {
 		String csvData = URLReader.getText(getEncodedUrl(symbol), true);
 		return new YahooHistoricalDataParser().parse(csvData);

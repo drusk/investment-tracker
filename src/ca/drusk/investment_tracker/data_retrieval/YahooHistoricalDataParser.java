@@ -18,7 +18,7 @@ import au.com.bytecode.opencsv.CSVReader;
  */
 public class YahooHistoricalDataParser {
 
-	public List<YahooHistoricalDataBean> parse(String csvData)
+	public List<YahooDataBean> parse(String csvData)
 			throws IOException, ParseException {
 		CSVReader reader = new CSVReader(new StringReader(csvData));
 
@@ -35,9 +35,9 @@ public class YahooHistoricalDataParser {
 		assert headers[5].equals("Volume");
 		assert headers[6].equals("Adj Close");
 
-		List<YahooHistoricalDataBean> beans = new ArrayList<YahooHistoricalDataBean>();
+		List<YahooDataBean> beans = new ArrayList<YahooDataBean>();
 		for (String[] line : allLines) {
-			YahooHistoricalDataBean bean = new YahooHistoricalDataBean();
+			YahooDataBean bean = new YahooDataBean();
 			bean.setDate(DateParser.parse(line[0]));
 			bean.setOpen(line[1]);
 			bean.setHigh(line[2]);

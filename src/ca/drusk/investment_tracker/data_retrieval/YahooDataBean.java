@@ -9,7 +9,7 @@ import java.util.Date;
  * @author drusk
  * 
  */
-public class YahooHistoricalDataBean {
+public class YahooDataBean {
 
 	private Date date;
 
@@ -82,7 +82,7 @@ public class YahooHistoricalDataBean {
 	}
 
 	/* Beans should have no-arg constructors */
-	public YahooHistoricalDataBean() {
+	public YahooDataBean() {
 	}
 
 	@Override

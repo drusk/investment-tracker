@@ -52,9 +52,9 @@ public class HistoricalDataServlet extends HttpServlet {
 		response.setContentType("application/json");
 		
 		try {
-			List<YahooHistoricalDataBean> beans = dataFetcher
+			List<YahooDataBean> beans = dataFetcher
 					.fetchDataForSymbol(queriedSymbol);
-			Type type = new TypeToken<List<YahooHistoricalDataBean>>(){}.getType();
+			Type type = new TypeToken<List<YahooDataBean>>(){}.getType();
 			PrintWriter out = response.getWriter();
 			out.write(gson.toJson(beans, type));
 

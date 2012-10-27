@@ -37,7 +37,7 @@ public class YahooHistoricalDataParserTest {
 	@Test
 	public void testParseCsvToBean() throws IOException, ParseException {
 		String csvData = readToString("google_data.csv");
-		List<YahooHistoricalDataBean> beans = underTest.parse(csvData);
+		List<YahooDataBean> beans = underTest.parse(csvData);
 
 		assertEquals(beans.size(), 2062);
 		assertThat(
