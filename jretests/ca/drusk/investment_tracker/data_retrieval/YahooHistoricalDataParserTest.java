@@ -1,6 +1,6 @@
 package ca.drusk.investment_tracker.data_retrieval;
 
-import static ca.drusk.investment_tracker.matchers.YahooHistoricalDataBeanMatcher.equalsBean;
+import static ca.drusk.investment_tracker.matchers.YahooDataBeanMatcher.equalsBean;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 

@@ -17,12 +17,12 @@ import ca.drusk.investment_tracker.utils.DateParser;
  * @author drusk
  * 
  */
-public class YahooHistoricalDataBeanMatcher extends
+public class YahooDataBeanMatcher extends
 		TypeSafeMatcher<YahooDataBean> {
 
 	private final YahooDataBean expected;
 
-	public YahooHistoricalDataBeanMatcher(YahooDataBean expected) {
+	public YahooDataBeanMatcher(YahooDataBean expected) {
 		this.expected = expected;
 	}
 
@@ -56,7 +56,7 @@ public class YahooHistoricalDataBeanMatcher extends
 		bean.setClose(close);
 		bean.setVolume(volume);
 		bean.setAdjustedClose(adjustedClose);
-		return new YahooHistoricalDataBeanMatcher(bean);
+		return new YahooDataBeanMatcher(bean);
 	}
 
 }
